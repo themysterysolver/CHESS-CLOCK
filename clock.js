@@ -12,6 +12,10 @@ class Tile{
             this.element.classList.add("custom-tile");
         }
         this.element.classList.add("Tile");
+
+        this.element.onclick = () =>{
+            window.location.href="clock.html?type=${this.type}&time=${this.time}&increment=${this.increment}";
+        }
     }
 }
 function main(){

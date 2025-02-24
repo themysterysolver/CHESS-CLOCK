@@ -22,3 +22,27 @@
     margin-left: 100px auto;
     margin-top: 2px;
 }
+body{
+    justify-content: center;
+}
+#big-box {
+    display: flex;
+    width: 90vw; 
+    height: 80vh;
+    margin: auto;
+    border: 2px solid black;
+}
+
+#left, #right {
+    flex: 1;  
+    background-color: lightblue; 
+}
+
+#middle {
+    flex: 0.2; 
+    background-color: lightgray;
+}
+
+#left, #middle, #right {
+    height: 100%; 
+}
