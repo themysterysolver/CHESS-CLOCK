@@ -41,8 +41,27 @@ body{
 #middle {
     flex: 0.2; 
     background-color: lightgray;
+    flex-direction: column; /* Stack buttons vertically */
+    justify-content: center;
+    align-items: center;
 }
 
 #left, #middle, #right {
     height: 100%; 
+}
+
+#restart-btn,#pause-btn{
+    margin-left: 10%;
+    font-size: 36px; /* Increase button icon size */
+    width: 80px; /* Set width */
+    height: 80px; /* Set height */
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    margin-top:90%;
+}
+
+button:hover {
+    background: #ccc;
+    transform: scale(1.1);
 }
