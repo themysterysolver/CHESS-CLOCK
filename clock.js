@@ -14,7 +14,14 @@ class Tile{
         this.element.classList.add("Tile");
 
         this.element.onclick = () =>{
-            window.location.href=`clock.html?type=${this.type}&time=${this.time}&increment=${this.increment}`;
+            console.log(this.type!=="custom");
+            if(this.type.toLowerCase!=="custom"){
+                window.location.href=`clock.html?type=${this.type}&time=${this.time}&increment=${this.increment}`;
+            }
+            else{
+                console.log("Hey show before!!");
+                show(); 
+            }
         }
     }
 }
@@ -30,7 +37,31 @@ function main(){
         }
     }
     let custom_parent=document.getElementById("custom");
+    console.log(document.getElementById("custom").innerHTML);
     let ct=new Tile("Custom");
     custom_parent.appendChild(ct.element);
 }
+
+function show(){
+    console.log("Hey at show!!");
+    document.getElementById("model").style.display="block";
+    document.getElementById("overlay").style.display="block";
+}
+
+function closeModel(){
+    document.getElementById("model").style.display="none";
+    document.getElementById("overlay").style.display="none";
+}
+
+function submitButton(){
+    let white_time=document.getElementById("wt").value;
+    let black_time=document.getElementById("bt").value;
+    let white_increment=document.getElementById("wi").value;
+    let black_increment=document.getElementById("bi").value;
+
+    window.location.href=`clock.html?type=custom&white_time=${white_time}&white_increment=${white_increment}&black_increment=${black_increment}&black_time=${black_time}`;
+}
+
 main();
+
+

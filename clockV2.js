@@ -108,5 +108,12 @@ function mainV2(){
         const inc=parseInt(URL.get("increment"));
         const game=new Game(time,inc,time,inc);
     }
+    else{
+        const wt=parseInt(URL.get("white_time"));
+        const bt=parseInt(URL.get("black_time"));
+        const wi=parseInt(URL.get("white_increment"));
+        const bi=parseInt(URL.get("black_increment"));
+        const game=new Game(wt,wi,bt,bi);
+    }
 }
 window.onload = mainV2;
