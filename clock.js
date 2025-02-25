@@ -14,14 +14,14 @@ class Tile{
         this.element.classList.add("Tile");
 
         this.element.onclick = () =>{
-            window.location.href="clock.html?type=${this.type}&time=${this.time}&increment=${this.increment}";
+            window.location.href=`clock.html?type=${this.type}&time=${this.time}&increment=${this.increment}`;
         }
     }
 }
 function main(){
     let parent=document.getElementById("bod");
     console.log("Chckpoint-1");
-    let time_format=['Bulltet','Blitz','Rapid']
+    let time_format=['Bullet','Blitz','Rapid']
     let time_constraint=[[[1,0],[1,2],[2,1]],[[3,0],[3,2],[5,0]],[[10,0],[15,10],[30,0]]]
     for(let i=0;i<time_format.length;i++){
         for(let j=0;j<time_constraint[i].length;j++){
