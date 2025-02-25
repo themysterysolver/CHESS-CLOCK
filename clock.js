@@ -14,8 +14,8 @@ class Tile{
         this.element.classList.add("Tile");
 
         this.element.onclick = () =>{
-            console.log(this.type!=="custom");
-            if(this.type.toLowerCase!=="custom"){
+            console.log(this.type.toLowerCase()!=="custom");
+            if(this.type.toLowerCase()!=="custom"){
                 window.location.href=`clock.html?type=${this.type}&time=${this.time}&increment=${this.increment}`;
             }
             else{

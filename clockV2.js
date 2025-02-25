@@ -65,10 +65,11 @@ class Game{
         this.running=true;
 
         document.addEventListener("keydown",(event)=>{
-            if(event.code === "Space"){
+            console.log(event.key,event.code);
+            if(event.key === "Space"){
                 this.switchTurns();
             }
-            if(event.code === "Enter"){
+            if(event.key === "Enter"){
                 if(this.running){
                     this.pause();
                 }
