@@ -1,62 +1,112 @@
-function populateMode(type,time,inc){
+function populateMode(type){
     let fortype=document.getElementById("fortype");
     let mode=document.createElement("div");
     mode.innerHTML=`${type}`;
     fortype.appendChild(mode);
 }
-function setMiddleButton(){
-    return;
-}
+
 class chessClock{
-    constructor(time_white,increment_white,time_black,increment_black){
-        console.log("CP-1");
+    constructor(time,increment,id){
 
-        this.time_white=time_white;
-        this.time_black=time_black;
-        this.increment_white=increment_white;
-        this.increment_black=increment_black;
+        this.time=this.minute_to_sec(time);
+        this.element=document.getElementById(id);
+        this.increment=increment;
+        this.global=null; //to manage multiple session!
+        this.display();
 
-        this.white_sec=this.minute_to_sec(this.time_white);
-        this.black_sec=this.minute_to_sec(this.time_black);
-        
-        this.setDisplay();
     }
     minute_to_sec(minute){
         return minute*60;
     }
+
     sec_to_display(sec){
         let mm=Math.floor(sec/60);
         let ss=sec%60;
         return `${mm<10 ? "0":""}${mm}:${ss<10 ? "0":""}${ss}`;
     }
-    setDisplay(){
-        let l=document.createElement("div");
-        let r=document.createElement("div");
-        l.id="l";
-        r.id="r";
-        let left=document.getElementById("left");
-        let right=document.getElementById("right");
-        left.appendChild(l);
-        right.appendChild(r);
+
+    display(){
+        this.element.innerHTML=""
+        document.getElementById(this.element.id).innerHTML=`${this.sec_to_display(this.time)}`;
+    }
+
+    addIncrement(){
+        this.time+=this.increment;
         this.display();
     }
 
-    display(){
-        document.getElementById("l").innerHTML=`${this.sec_to_display(this.white_sec)}`;
-        document.getElementById("r").innerHTML=`${this.sec_to_display(this.black_sec)}`;
+    startTimer(){
+        if(this.global){return;}
+        this.global= setInterval(()=>{
+            if(this.time>0){
+                this.time--;
+                this.display();
+            }
+            else{
+                this.stopTimer();
+                alert("Time's up!");
+            }
+        },1000);
     }
+    isRunning(){
+        return this.global!==null;
+    }
+    stopTimer(){
+        clearInterval(this.global);
+        this.global=null;
+    }
+}
+class Game{
+    constructor(wt,wi,bt,bi){
+        this.white_clock=new chessClock(wt,wi,"left");
+        this.black_clock=new chessClock(bt,bi,"right");
+
+        this.active=this.white_clock;
+        this.running=true;
+
+        document.addEventListener("keydown",(event)=>{
+            if(event.code === "Space"){
+                this.switchTurns();
+            }
+            if(event.code === "Enter"){
+                if(this.running){
+                    this.pause();
+                }
+                else{
+                    this.resume();
+                }
+            }
+        })
+    }
+    pause(){
+        this.running=false;
+        this.active.stopTimer();
+    }
+    resume(){
+        this.running=true;
+        this.active.startTimer();
+    }
+
+    switchTurns(){
+        if(!this.running){
+            return;
+        }
+        this.active.stopTimer();
+        this.active.addIncrement();
+        this.active=this.white_clock === this.active ? this.black_clock : this.white_clock;
+        this.active.startTimer();
+    }
+
 }
 function mainV2(){
     
     const URL=new URLSearchParams(window.location.search);
     const type=URL.get("type");
-    const time=URL.get("time");
-    const inc=URL.get("increment"); 
-    
-    populateMode(type,time,inc);
-    setMiddleButton();
+    populateMode(type);
     if(type!="custom"){
-        const clock=new chessClock(time,inc,time,inc);
+        const time=parseInt(URL.get("time"));
+        const inc=parseInt(URL.get("increment"));
+        const game=new Game(time,inc,time,inc);
     }
 }
 window.onload = mainV2;
