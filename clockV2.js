@@ -112,12 +112,22 @@ class Game{
         if(!this.running){
             return;
         }
+        if(this.endGame()){
+            return;
+        }
         this.active.setActive(false);
         this.active.stopTimer();
         this.active.addIncrement();
         this.active=this.white_clock === this.active ? this.black_clock : this.white_clock;
         this.active.startTimer();
         this.active.setActive(true);
+    }
+    endGame(){
+        this.temp=this.white_clock === this.active ? this.black_clock : this.white_clock;
+        if (this.active.time<=0 || this.temp.time<=0){
+            return true;
+        }
+        return false;
     }
 
 
