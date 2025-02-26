@@ -105,3 +105,7 @@ button:hover {
     background-color: #302727;
     color: white;
 }
+#left.active-lost,#right.active-lost{
+    background-color: rgb(191, 13, 13);
+    color: white;
+}

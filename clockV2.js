@@ -44,7 +44,8 @@ class chessClock{
             }
             else{
                 this.stopTimer();
-                alert("Time's up!");
+                this.setLost(true); 
+                this.display()  
             }
         },1000);
     }
@@ -61,6 +62,14 @@ class chessClock{
         }
         else{
             this.element.classList.remove("active-player");
+        }
+    }
+    setLost(bool){
+        if(bool){
+            this.element.classList.add("active-lost");
+        }
+        else{
+            this.element.classList.remove("active-lost");
         }
     }
 }
