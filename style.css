@@ -35,13 +35,19 @@ body{
 
 #left, #right {
     flex: 1;  
-    background-color: lightblue; 
+    background-color: rgb(131, 126, 126); 
+    font-size: 25vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
 }
 
 #middle {
     flex:0.2;
     display: flex;
-    background-color: lightgray;
+    background-color: rgb(255, 253, 253);
     flex-direction: column; /* Stack buttons vertically */
     justify-content: center;
     align-items: center;
