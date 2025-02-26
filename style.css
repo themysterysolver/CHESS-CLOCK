@@ -30,12 +30,12 @@ body{
     width: 70vw; 
     height: 80vh;
     margin: auto;
-    border: 2px solid black;
 }
 
 #left, #right {
     flex: 1;  
-    background-color: rgb(131, 126, 126); 
+    background-color: rgb(163, 144, 144); 
+    color: #ccc ;
     font-size: 25vh;
     display: flex;
     align-items: center;
@@ -99,4 +99,9 @@ button:hover {
     width: 100%;
     height: 100%;
     background-color:rgba(0, 0, 0, 0.5); ;
+}
+
+#left.active-player,#right.active-player{
+    background-color: #302727;
+    color: white;
 }

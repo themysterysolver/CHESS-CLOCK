@@ -55,6 +55,14 @@ class chessClock{
         clearInterval(this.global);
         this.global=null;
     }
+    setActive(bool){
+        if(bool){
+            this.element.classList.add("active-player");
+        }
+        else{
+            this.element.classList.remove("active-player");
+        }
+    }
 }
 class Game{
     constructor(wt,wi,bt,bi){
@@ -66,7 +74,8 @@ class Game{
 
         document.addEventListener("keydown",(event)=>{
             console.log(event.key,event.code);
-            if(event.key === "Space"){
+            if(event.code === "Space"){
+                console.log("SPACEDDD!!!!");
                 this.switchTurns();
             }
             if(event.key === "Enter"){
@@ -81,10 +90,12 @@ class Game{
     }
     pause(){
         this.running=false;
+        this.active.setActive(false);
         this.active.stopTimer();
     }
     resume(){
         this.running=true;
+        this.active.setActive(true);
         this.active.startTimer();
     }
 
@@ -92,11 +103,14 @@ class Game{
         if(!this.running){
             return;
         }
+        this.active.setActive(false);
         this.active.stopTimer();
         this.active.addIncrement();
         this.active=this.white_clock === this.active ? this.black_clock : this.white_clock;
         this.active.startTimer();
+        this.active.setActive(true);
     }
+
 
 }
 function mainV2(){
