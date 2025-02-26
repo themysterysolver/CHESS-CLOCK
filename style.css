@@ -27,7 +27,7 @@ body{
 }
 #big-box {
     display: flex;
-    width: 70vw; 
+    width: 75vw; 
     height: 80vh;
     margin: auto;
 }
@@ -119,24 +119,19 @@ button:hover {
 }
 #fortype {
     text-align: center;
-    margin-bottom: 10px; /* Adjust as needed */
-    font-size: 30px; /* Adjust text size */
+    margin-bottom: 10px; 
+    font-size: 30px; 
     font-weight: bold;
-}
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* Ensures video covers the whole screen */
-    z-index: -1; /* Pushes video to the background */
 }
 #content {
     position: relative;
-    z-index: 1; /* Ensures content appears above the video */
-    color: white; /* Ensures text is visible */
+    z-index: 1; 
+    color: white; 
 }
 #header,#fortype{
     font-size: 100px;
+}
+body {
+    background: url('BG1.png') no-repeat center center fixed;
+    background-size: cover;
 }
