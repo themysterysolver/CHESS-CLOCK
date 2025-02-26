@@ -19,7 +19,7 @@
     width: 50%; 
     text-align: center;  
     padding: 10px;
-    margin-left: 100px auto;
+    margin-left: auto;
     margin-top: 2px;
 }
 body{
@@ -39,26 +39,35 @@ body{
 }
 
 #middle {
-    flex: 0.2; 
+    flex:0.2;
+    display: flex;
     background-color: lightgray;
     flex-direction: column; /* Stack buttons vertically */
     justify-content: center;
     align-items: center;
+    gap:20px;
 }
 
 #left, #middle, #right {
     height: 100%; 
 }
 
-#restart-btn,#pause-btn{
-    margin-left: 10%;
-    font-size: 36px; /* Increase button icon size */
-    width: 80px; /* Set width */
-    height: 80px; /* Set height */
+.mid{
+    width:100%; /* Increase button icon size */
+    max-width:120px; /* Set width */
+    height: auto; /* Set height */
     border: none;
     background: #ddd;
     cursor: pointer;
-    margin-top:90%;
+
+}
+button {
+    width: 100%;
+    background: transparent; 
+    border: none; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button:hover {
