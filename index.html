@@ -11,15 +11,18 @@
     <div id="model">
         <h3>Set your own custom timer.</h1>
         <label for="wt">White time:</label>
-        <input type="number" id="wt" max="30" min="0" value="00"><br>
+        <input type="number" id="wt" max="30" min="0" value="5"><br>
         <label for="wi">White Increment:</label>
-        <input type="number" id="wi" max="30" min="0" value="00"><br>
+        <input type="number" id="wi" max="30" min="0" value="0"><br>
         <label for="bt">Black time:</label>
-        <input type="number" id="bt" max="30" min="0" value="00"><br>
+        <input type="number" id="bt" max="30" min="0" value="5"><br>
         <label for="bi">Black Increment:</label>
-        <input type="number" id="bi" max="30" min="0" value="00"><br>
-        <button onclick="submitButton()">Submit</button>
-        <button onclick="closeModel()">Cancel</button>
+        <input type="number" id="bi" max="30" min="0" value="0"><br>
+        <div id="bb">
+            <button onclick="closeModel()">Cancel</button>
+            <button onclick="submitButton()">Submit</button>
+        </div>
+        
     </div>
     <h1 id="header">Chess clock</h1>
     <div id="total">

@@ -61,7 +61,8 @@ function submitButton(){
 
     window.location.href=`clock.html?type=custom&white_time=${white_time}&white_increment=${white_increment}&black_increment=${black_increment}&black_time=${black_time}`;
 }
-
-main();
+document.addEventListener("DOMContentLoaded", () => {
+    main();
+});
 
 
