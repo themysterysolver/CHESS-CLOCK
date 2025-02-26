@@ -80,29 +80,57 @@ class Game{
 
         this.active=this.white_clock;
         this.running=true;
+        this.first=true;
+        this.pp=document.getElementById("play-replay-btn");
+        this.pp.addEventListener("click",()=>this.makeChangePP());
+    }
+    makeChangePP(){
+        if(this.first){
+            document.addEventListener("keydown",(event)=>{
+                console.log(event.key,event.code);
+                if(event.code === "Space"){
+                    console.log("SPACEDDD!!!!");
+                    this.switchTurns();
+                }
+                if(event.key === "Enter"){
+                    if(this.running){
+                        this.pause();
+                    }
+                    else{
+                        this.resume();
+                    }
+                }
+            })
+            this.first=false;       
+        }
+        console.log("make change");
+        let imgElement=document.getElementById("image");
+        let s=imgElement.src;
+        let img=s.split('/').pop().toLowerCase();
+        if(img==="play.png"){
+            this.resume();
 
-        document.addEventListener("keydown",(event)=>{
-            console.log(event.key,event.code);
-            if(event.code === "Space"){
-                console.log("SPACEDDD!!!!");
-                this.switchTurns();
-            }
-            if(event.key === "Enter"){
-                if(this.running){
-                    this.pause();
-                }
-                else{
-                    this.resume();
-                }
-            }
-        })
+        }
+        else if(img==="pause.png"){
+            this.pause();
+        }
     }
     pause(){
+        let imgElement=document.getElementById("image");
+        let s=imgElement.src;
+        let img=s.split('/').pop().toLowerCase();
+        imgElement.src="PLAY.PNG";
+
         this.running=false;
         this.active.setActive(false);
         this.active.stopTimer();
     }
     resume(){
+        let imgElement=document.getElementById("image");
+        let s=imgElement.src;
+        let img=s.split('/').pop().toLowerCase();
+        imgElement.src="PAUSE.PNG";
+        
         this.running=true;
         this.active.setActive(true);
         this.active.startTimer();
